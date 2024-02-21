@@ -1,0 +1,17 @@
+<div class="pl-80 pr-80">
+  <div class="text-3xl font-bold mt-20 mb-20">Accueil</div>
+  <div class="flex flex-row flex-wrap gap-10 justify-between mb-20">
+
+    <div *ngFor="let article of articles">
+      <article [routerLink]="['/article', article.identifiant]" class="cursor-pointer w-auto h-auto flex flex-col gap-3" >
+        <div class="rounded-lg">
+          <img src="../../../assets/image%201.png" alt="">
+        </div>
+        <div class="text-1xl">
+          <a><p> {{ article.titre }} </p></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+
