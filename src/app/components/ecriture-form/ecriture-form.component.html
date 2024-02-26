@@ -1,0 +1,19 @@
+<form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="title">Titre de l'article :</label>
+    <input type="text" id="title" formControlName="title" />
+    <div *ngIf="articleForm.get('title').hasError('required')">
+      Le titre est requis.
+    </div>
+  </div>
+
+  <div>
+    <label for="content">Contenu de l'article :</label>
+    <textarea id="content" formControlName="content"></textarea>
+    <div *ngIf="articleForm.get('content').hasError('required')">
+      Le contenu est requis.
+    </div>
+  </div>
+
+  <button type="submit">Publier</button>
+</form>
