@@ -3,6 +3,8 @@ import {ActivatedRoute, RouterLink} from "@angular/router";
 import {FooterComponent} from "../../components/footer/footer.component";
 import {NavbarComponent} from "../../components/navbar/navbar.component";
 import {ArticleService} from "../../service/article.service";
+import {Article} from "../../models/article.model";
+import {ArticleComponent1} from "../../components/article/article.component";
 
 @Component({
   selector: 'app-article',
@@ -10,24 +12,18 @@ import {ArticleService} from "../../service/article.service";
   imports: [
     RouterLink,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    ArticleComponent1
   ],
   templateUrl: './article.component.html',
   styleUrl: './article.component.css'
 })
 
-export class ArticleComponent implements OnInit {
-  article: any;
+export class ArticleComponent  {
 
-  constructor(private route: ActivatedRoute, private articleService: ArticleService) {
+
+  constructor() {
   }
 
-  ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      const articleId = params['id'];
-      this.articleService.getArticleById(articleId).subscribe((article: any) => {
-        this.article = article;
-      });
-    });
-  }
+
 }
