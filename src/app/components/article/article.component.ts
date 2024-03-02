@@ -1,14 +1,26 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ArticleService } from '../../service/article.service';
+import {Article} from "../../models/article.model";
 
 @Component({
-  selector: 'app-article',
+  selector: 'app-articl',
   standalone: true,
   imports: [],
   templateUrl: './article.component.html',
   styleUrl: './article.component.css'
 })
-export class ArticleComponent {
-  constructor(private articleService: ArticleService) { }
+export class ArticleComponent1 implements OnInit{
+  article: Article | undefined;
+  private id: number = 0;
+
+  constructor(private articleService: ArticleService, private route: ActivatedRoute) {
+  }
+
+  ngOnInit(): void {
+    this.id = Number(this.route.snapshot.paramMap.get('id'));
+    this.articleService.getArticleById(this.id).subscribe((article: Article | undefined) => {
+      this.article = article;
+    });
+  }
 }
