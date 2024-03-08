@@ -1,33 +1,46 @@
-import { Component } from '@angular/core';
-import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-
+import {Component} from '@angular/core';
+import {Form, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {Publier} from "../../service/publier";
+import {Article} from "../../models/article.model";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-ecriture-form',
   standalone: true,
-    imports: [
-        FormsModule,
-        ReactiveFormsModule
-    ],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    NgIf,
+
+  ],
   templateUrl: './ecriture-form.component.html',
   styleUrl: './ecriture-form.component.css'
 })
 export class EcritureFormComponent {
-  articleForm: FormGroup;
+  article : FormGroup;
+  articles: Article;
+  currentDate: Date = new Date();
+  count = 0;
+  constructor(private fb: FormBuilder, private pub: Publier,) {
+    this.article = this.fb.group({
+      identifiant:[this.count, Validators.required],
+      auteur: ['francis', Validators.required],
+      titre: ['', Validators.required],
+      contenu: [ '', Validators.required],
+      date_publication: [this.currentDate, Validators.required],
 
-  constructor(private fb: FormBuilder) {
-    this.articleForm = this.fb.group({
-      title: ['', Validators.required],
-      content: ['', Validators.required],
     });
+    this.articles=this.article.value;
+
+  }
+  onSubmit(){
+    this.articles=this.article.value;
+    this.pub.addArticle(this.articles).subscribe(data=>{console.log(data)
+    });
+    console.log(this.articles);
+
   }
 
-  onSubmit() {
-    if (this.articleForm.valid) {
-      // Envoyez les données de l'article au serveur ou effectuez d'autres actions ici
-      console.log(this.articleForm.value);
-    }
-  }
 }
 
 
