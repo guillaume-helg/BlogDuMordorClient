@@ -1,16 +1,16 @@
-<form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="article" (ngSubmit)="onSubmit()">
   <div>
-    <label for="title">Titre de l'article :</label>
-    <input type="text" id="title" formControlName="title" />
-    <div *ngIf="articleForm.get('title')">
+    <label for="titre">Titre de l'article :</label>
+    <input type="text" id="titre" formControlName="titre" />
+    <div *ngIf="article.get('titre')">
       Le titre est requis.
     </div>
   </div>
 
   <div>
-    <label for="content">Contenu de l'article :</label>
-    <textarea id="content" formControlName="content"></textarea>
-    <div *ngIf="articleForm.get('content')">
+    <label for="contenu">Contenu de l'article :</label>
+    <textarea id="contenu" formControlName="contenu"></textarea>
+    <div *ngIf="article.get('contenu')">
       Le contenu est requis.
     </div>
   </div>

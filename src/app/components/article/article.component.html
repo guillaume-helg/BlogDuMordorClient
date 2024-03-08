@@ -1,5 +1,7 @@
 <div class="pl-80 pr-80">
   <div class="text-3xl font-bold mt-20 mb-20">{{article?.titre}}</div>
+  <button [routerLink]="['/article',article?.identifiant,'modif']" type="button" class="px-8 py-3 font-semibold rounded dark:bg-blue-300-100 dark:text-gray-800 cursor-pointer">Modifier article</button>
+
   <div class="flex flex-row flex-wrap gap-10 justify-between mb-20">
     <div class="text-xl">{{article?.auteur}}</div>
     <div class="text-lg">{{article?.date_publication}}</div>

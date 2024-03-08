@@ -1,12 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, RouterLink} from '@angular/router';
 import { ArticleService } from '../../service/article.service';
 import {Article} from "../../models/article.model";
 
 @Component({
   selector: 'app-articl',
   standalone: true,
-  imports: [],
+  imports: [
+    RouterLink
+  ],
   templateUrl: './article.component.html',
   styleUrl: './article.component.css'
 })
