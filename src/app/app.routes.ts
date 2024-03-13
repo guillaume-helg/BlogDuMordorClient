@@ -4,8 +4,12 @@ import {ArticleComponent} from "./pages/article/article.component";
 import {ConnexionComponent} from "./pages/connexion/connexion.component";
 import {EcritureFormComponent} from "./components/ecriture-form/ecriture-form.component";
 import{ModifFormComponent} from "./components/modif-form/article-form.component.modif";
+import {LayoutComponent} from "./components/layout/layout.component";
+
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', redirectTo: 'connexion', pathMatch: 'full' },
+  { path: '', component: LayoutComponent, children: [{path:'home', component: HomeComponent}] },
+  { path: '**', component: ConnexionComponent},
   { path: 'article/:id', component: ArticleComponent },
   { path: 'ecriture', component: EcritureFormComponent},
   { path: 'connexion', component: ConnexionComponent },
