@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {FormsModule} from "@angular/forms";
+import {ConnexionService} from '../../service/connexion.service';
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-connexion-form',
@@ -18,20 +20,21 @@ export class ConnexionFormComponent {
     "password": ""
   };
 
-  constructor(private http: HttpClient, private router: Router) {
+  connexion: boolean | undefined;
+
+  constructor(private connexionService: ConnexionService, http: HttpClient, private router: Router) {
   }
 
   signIn() {
     debugger;
-    this.http.post('localhost:3000/utilisateurs/login', this.connexionObj).subscribe((res: any) => {
-      if (res.result) {
+    this.connexionService.getConnexion().subscribe((bool) => {
+      this.connexion = bool;
+      if (this.connexion) {
         alert('Connexion réussie !');
-        localStorage.setItem('loginToken', res.data.token);
         this.router.navigateByUrl('/home');
-
       } else {
-        alert(res.message);
+        console.log("Connexion non validée");
       }
-    })
+    });
   }
 }

@@ -12,7 +12,7 @@ import {Article} from "../../models/article.model";
   templateUrl: './article.component.html',
   styleUrl: './article.component.css'
 })
-export class ArticleComponent1 implements OnInit{
+export class ArticleComponent implements OnInit{
   article: Article | undefined;
   private id: number = 0;
 
