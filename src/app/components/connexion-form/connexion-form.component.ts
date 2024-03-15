@@ -1,40 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { ConnexionService } from '../../service/connexion.service';
 import {HttpClient} from "@angular/common/http";
-import {ActivatedRoute, Router} from "@angular/router";
-import {FormsModule} from "@angular/forms";
-import {ConnexionService} from '../../service/connexion.service';
-import {Observable} from "rxjs";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-connexion-form',
+  templateUrl: './connexion-form.component.html',
   standalone: true,
   imports: [
-    FormsModule
+    FormsModule,
+    NgIf
   ],
-  templateUrl: './connexion-form.component.html',
-  styleUrl: './connexion-form.component.css'
+  styleUrls: ['./connexion-form.component.css'],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class ConnexionFormComponent {
-  connexionObj: any = {
-    "email": "",
-    "password": ""
-  };
+export class ConnexionFormComponent implements OnInit {
+  email = '';
+  password = '';
+  noconnexion = false;
 
-  connexion: boolean | undefined;
+  constructor(private connexionService: ConnexionService, private router: Router) {}
 
-  constructor(private connexionService: ConnexionService, http: HttpClient, private router: Router) {
+  ngOnInit(): void {
+    // Initialisation
   }
 
-  signIn() {
-    debugger;
-    this.connexionService.getConnexion().subscribe((bool) => {
-      this.connexion = bool;
-      if (this.connexion) {
-        alert('Connexion réussie !');
-        this.router.navigateByUrl('/home');
-      } else {
-        console.log("Connexion non validée");
-      }
+  login() {
+    this.noconnexion = false;
+    this.connexionService.login(this.email, this.password).subscribe(result => {
+      this.router.navigateByUrl('./pages/home/home.component');
+    }, error => {
+      this.noconnexion = true;
     });
   }
 }

@@ -1,19 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {ConnexionComponent} from '../pages/connexion/connexion.component';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ConnexionService {
 
-  private apiUrl = 'localhost:3000/utilisateurs/login';
+  private apiUrl = 'http://localhost:3000/utilisateurs/login';
 
-  constructor(private http: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
+
+  login( pUsername: string, pPassword: string){
+    const loginData= {
+      email: pUsername,
+      password: pPassword
+    }
+    return new Observable<boolean>((observer)=> {
+      this.httpClient.post(this.apiUrl, loginData).subscribe(result =>{
+        observer.next(true);
+        observer.complete();
+      }, error => {
+        observer.error(false);
+        observer.complete();
+      });
+    });
 
 
-
-  getConnexion(): Observable<boolean> {
-    return this.http.get<boolean>(this.apiUrl, { withCredentials: true });
   }
+
 }
