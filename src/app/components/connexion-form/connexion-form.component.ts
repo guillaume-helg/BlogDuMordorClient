@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ConnexionService } from '../../service/connexion.service';
 import {HttpClient} from "@angular/common/http";
 import {NgIf} from "@angular/common";
+import {AuthGuard} from "../../service/AuthGuard";
 
 @Component({
   selector: 'app-connexion-form',
@@ -21,7 +22,7 @@ export class ConnexionFormComponent implements OnInit {
   password = '';
   noconnexion = false;
 
-  constructor(private connexionService: ConnexionService, private router: Router) {}
+  constructor(private connexionService: ConnexionService, private router: Router, private auth: AuthGuard) {}
 
   ngOnInit(): void {
     // Initialisation
@@ -30,7 +31,12 @@ export class ConnexionFormComponent implements OnInit {
   login() {
     this.noconnexion = false;
     this.connexionService.login(this.email, this.password).subscribe(result => {
-      this.router.navigateByUrl('./pages/home/home.component');
+      if (result) {
+        this.auth.setLoggedIn(true);
+        this.router.navigateByUrl('/home');
+      } else {
+        this.noconnexion = true;
+      }
     }, error => {
       this.noconnexion = true;
     });

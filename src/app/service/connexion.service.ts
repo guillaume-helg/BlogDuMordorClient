@@ -23,10 +23,8 @@ export class ConnexionService {
       }, error => {
         observer.error(false);
         observer.complete();
+
       });
     });
-
-
   }
-
 }
