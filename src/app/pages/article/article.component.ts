@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, RouterLink} from "@angular/router";
 import {FooterComponent} from "../../components/footer/footer.component";
 import {NavbarComponent} from "../../components/navbar/navbar.component";
-import {ArticleComponent1} from "../../components/article/article.component";
 
 @Component({
   selector: 'app-article',
@@ -11,7 +10,6 @@ import {ArticleComponent1} from "../../components/article/article.component";
     RouterLink,
     FooterComponent,
     NavbarComponent,
-    ArticleComponent1
   ],
   templateUrl: './article.component.html',
   styleUrl: './article.component.css'

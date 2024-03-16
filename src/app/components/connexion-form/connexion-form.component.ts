@@ -1,37 +1,44 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { ConnexionService } from '../../service/connexion.service';
 import {HttpClient} from "@angular/common/http";
-import {Router} from "@angular/router";
-import {FormsModule} from "@angular/forms";
+import {NgIf} from "@angular/common";
+import {AuthGuard} from "../../service/AuthGuard";
 
 @Component({
   selector: 'app-connexion-form',
+  templateUrl: './connexion-form.component.html',
   standalone: true,
   imports: [
-    FormsModule
+    FormsModule,
+    NgIf
   ],
-  templateUrl: './connexion-form.component.html',
-  styleUrl: './connexion-form.component.css'
+  styleUrls: ['./connexion-form.component.css'],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class ConnexionFormComponent {
-  connexionObj: any = {
-    "email": "",
-    "password": ""
-  };
+export class ConnexionFormComponent implements OnInit {
+  email = '';
+  password = '';
+  noconnexion = false;
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private connexionService: ConnexionService, private router: Router, private auth: AuthGuard) {}
+
+  ngOnInit(): void {
+    // Initialisation
   }
 
-  signIn() {
-    debugger;
-    this.http.post('localhost:3000/utilisateurs/login', this.connexionObj).subscribe((res: any) => {
-      if (res.result) {
-        alert('Connexion réussie !');
-        localStorage.setItem('loginToken', res.data.token);
+  login() {
+    this.noconnexion = false;
+    this.connexionService.login(this.email, this.password).subscribe(result => {
+      if (result) {
+        this.auth.setLoggedIn(true);
         this.router.navigateByUrl('/home');
-
       } else {
-        alert(res.message);
+        this.noconnexion = true;
       }
-    })
+    }, error => {
+      this.noconnexion = true;
+    });
   }
 }
