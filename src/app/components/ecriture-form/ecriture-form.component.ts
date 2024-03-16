@@ -21,13 +21,16 @@ export class EcritureFormComponent {
   articles: Article;
   currentDate: Date = new Date();
   count = 0;
+
   constructor(private fb: FormBuilder, private pub: Publier,) {
+    let date: Date = new Date('shortDate');
+
     this.article = this.fb.group({
       identifiant:[this.count, Validators.required],
       auteur: ['francis', Validators.required],
       titre: ['', Validators.required],
       contenu: [ '', Validators.required],
-      date_publication: [this.currentDate, Validators.required],
+      date_publication: [date, Validators.required],
 
     });
     this.articles=this.article.value;
