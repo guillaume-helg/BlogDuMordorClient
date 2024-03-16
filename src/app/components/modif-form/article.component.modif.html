@@ -1,15 +1,12 @@
-<form [formGroup]="article" (ngSubmit)="onSubmit()">
 <div class="pl-80 pr-80">
-  <div class="text-3xl font-bold mt-20 mb-20">{{articleaffichage?.titre}}</div>
-  <input type="text" id="titre" formControlName="titre" />
-  <div *ngIf="article.get('titre')">
+  <div class="text-3xl font-bold mt-10 mb-20">
+  <input type="text" [(ngModel)]="titre" />
+  </div>
   <div class="flex flex-row flex-wrap gap-10 justify-between mb-20">
-
-      <textarea id="contenu" formControlName="contenu"></textarea>
-      <div *ngIf="article.get('contenu')"></div>{{articleaffichage?.contenu}}
+    <textarea [(ngModel)]="contenu" class="resize-none w-full h-80" ></textarea>
     <div class="text-base"></div>
   </div>
-</div>
-</div>
   <button type="submit">Modifier</button>
-</form>
+</div>
+
+
