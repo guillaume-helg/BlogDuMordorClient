@@ -16,5 +16,9 @@ export class Publier {
     return this.http.post(this.apiUrl , article,{ withCredentials: true})
   }
 
+  supprimerArticle(id: number | undefined): Observable<any> {
+    return this.http.delete( `http://localhost:3000/articles/remove/${id}`,{ withCredentials: true})
+  }
+
 }
 

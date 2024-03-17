@@ -40,9 +40,6 @@ export class ModifFormComponent implements OnInit{
 
   constructor( private pub: Publier,private route: ActivatedRoute, private articleService: ArticleService) {
 
-
-
-
   }
 
   ngOnInit(): void {
@@ -57,15 +54,19 @@ export class ModifFormComponent implements OnInit{
 
     }
 
-  /*onSubmit(){
+  modifier(){
     //this.articles = this.article.value;
-    this.pub.addArticle(this.articles).subscribe(data=>{console.log(data)
+    /*this.pub.addArticle(this.articleaffichage).subscribe(data=>{console.log(data)
     });
-    console.log(this.articles);
+    console.log(this.articleaffichage);*/
 
-  }*/
+  }
 
-  onSubmit() {
+  supr() {
+    this.pub.supprimerArticle(this.articleaffichage?.identifiant).subscribe(data => {
+      console.log(data);
+    }
+    );
 
   }
 }
