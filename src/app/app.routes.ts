@@ -10,9 +10,9 @@ import {roleGuard} from "./role.guard";
 export const routes: Routes = [
   { path: '', redirectTo: 'connexion', pathMatch: 'full',  },
   { path: 'home', component: HomeComponent, canActivate: [authGuard]},
-  { path: '**', component: ConnexionComponent},
-  { path: 'article/:id', component: ArticleComponent, canActivate: [authGuard, roleGuard], data:{role:'ADMIN'} },
-  { path: 'ecriture', component: EcritureFormComponent, canActivate: [authGuard, roleGuard], data:{role:'ADMIN'}},
+  { path: 'article/:id', component: ArticleComponent, canActivate: [authGuard]},
+  { path: 'ecriture', component: EcritureFormComponent, canActivate: [authGuard]},
   { path: 'connexion', component: ConnexionComponent, canActivate: [authGuard] },
-  {path: 'article/:id/modif', component:ModifFormComponent, canActivate: [authGuard, roleGuard], data:{role:'ADMIN'}},
+  {path: 'article/:id/modif', component:ModifFormComponent, canActivate: [authGuard]},
+  { path: '**', component: ConnexionComponent, canActivate: [authGuard]},
 ];
