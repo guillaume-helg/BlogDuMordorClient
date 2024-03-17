@@ -5,6 +5,7 @@ import {ConnexionComponent} from "./pages/connexion/connexion.component";
 import {EcritureFormComponent} from "./components/ecriture-form/ecriture-form.component";
 import{ModifFormComponent} from "./components/modif-form/article-form.component.modif";
 import { authGuard } from './auth.guard';
+import {SignupFormComponent} from "./components/signup-form/signup-form.component";
 
 export const routes: Routes = [
   { path: '', redirectTo: 'connexion', pathMatch: 'full',  },
@@ -12,6 +13,7 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [authGuard]},
   { path: 'ecriture', component: EcritureFormComponent, canActivate: [authGuard]},
   { path: 'connexion', component: ConnexionComponent},
+  { path: 'inscription', component: SignupFormComponent},
   { path: 'article/:id/modif', component: ModifFormComponent, canActivate: [authGuard]},
   { path: '**', component: ConnexionComponent, canActivate: [authGuard]},
 ];

@@ -1,5 +1,5 @@
 import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { Router } from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ConnexionService } from '../../service/connexion.service';
 import {HttpClient} from "@angular/common/http";
@@ -12,7 +12,8 @@ import {NgIf} from "@angular/common";
   standalone: true,
   imports: [
     FormsModule,
-    NgIf
+    NgIf,
+    RouterLink
   ],
   styleUrls: ['./connexion-form.component.css'],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
