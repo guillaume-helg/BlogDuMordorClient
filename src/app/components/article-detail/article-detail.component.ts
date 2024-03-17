@@ -16,14 +16,11 @@ export class ArticleDetailComponent implements OnInit{
   article: Article | undefined;
   private id: number = 0;
 
-  constructor(private articleService: ArticleService, private route: ActivatedRoute) {
-  }
-
+  constructor(private articleService: ArticleService, private route: ActivatedRoute) { }
   ngOnInit(): void {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
     this.articleService.getArticleById(this.id).subscribe((article: Article | undefined) => {
-      this.article = article;
+      this.article = article || undefined;
     });
   }
-
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {catchError, map, Observable, of} from 'rxjs';
+import {map, Observable} from 'rxjs';
 import { Article } from '../models/article.model';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { Article } from '../models/article.model';
 })
 export class ArticleService {
 
-  private apiUrl = 'http://localhost:3000/articles/';
+  private apiUrl = 'http://localhost:3000/articles';
 
   constructor(private http: HttpClient) { }
 
@@ -17,13 +17,8 @@ export class ArticleService {
   }
 
   getArticleById(id: number): Observable<Article | undefined> {
-    return this.http.get<Article>(`${this.apiUrl}/${id}`, { withCredentials: true }).pipe(
-      map(article => article),
-      catchError(error => {
-        console.error('Error fetching article by ID:', error);
-        return of(undefined); // Return an observable of undefined if an error occurs
-      })
+    return this.getArticles().pipe(
+      map(articles => articles.find(article => article.identifiant === id))
     );
   }
-
 }
