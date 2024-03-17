@@ -11,19 +11,14 @@ export class ConnexionService {
 
   constructor(private httpClient: HttpClient) { }
 
-  login( pUsername: string, pPassword: string){
-    const loginData= {
-      email: pUsername,
-      password: pPassword
-    }
+  login(email: string, password: string){
     return new Observable<boolean>((observer)=> {
-      this.httpClient.post(this.apiUrl, loginData).subscribe(result =>{
+      this.httpClient.post(this.apiUrl, {email, password}).subscribe(result =>{
         observer.next(true);
         observer.complete();
       }, error => {
         observer.error(false);
         observer.complete();
-
       });
     });
   }
