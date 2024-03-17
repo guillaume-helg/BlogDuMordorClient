@@ -1,3 +1,4 @@
+
 <div class="pl-80 pr-80">
   <div class="text-3xl font-bold mt-10 mb-20">
   <input type="text" [(ngModel)]="titre" />
@@ -6,7 +7,8 @@
     <textarea [(ngModel)]="contenu" class="resize-none w-full h-80" ></textarea>
     <div class="text-base"></div>
   </div>
-  <button type="submit">Modifier</button>
+  <button (click)="modifier()">Modifier</button>
+  <button (click)="supr()" class="flex flex-row flex-wrap gap-10 justify-between mb-20">Supprimer</button>
 </div>
 
 
