@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ConnexionService } from '../../service/connexion.service';
 import {HttpClient} from "@angular/common/http";
 import {NgIf} from "@angular/common";
-import {AuthGuard} from "../../service/AuthGuard";
+
 
 @Component({
   selector: 'app-connexion-form',
@@ -22,7 +22,7 @@ export class ConnexionFormComponent implements OnInit {
   password = '';
   noconnexion = false;
 
-  constructor(private connexionService: ConnexionService, private router: Router, private auth: AuthGuard) {}
+  constructor(private connexionService: ConnexionService, private router: Router) {}
 
   ngOnInit(): void {
     // Initialisation
@@ -32,7 +32,7 @@ export class ConnexionFormComponent implements OnInit {
     this.noconnexion = false;
     this.connexionService.login(this.email, this.password).subscribe(result => {
       if (result) {
-        this.auth.setLoggedIn(true);
+        localStorage.setItem('token', Math.random().toString());
         this.router.navigateByUrl('/home');
       } else {
         this.noconnexion = true;
@@ -40,5 +40,13 @@ export class ConnexionFormComponent implements OnInit {
     }, error => {
       this.noconnexion = true;
     });
+  }
+
+  logout() {
+    const confirmation=confirm('Voulez vous vous déconnecter');
+    if (confirmation){
+      localStorage.removeItem('token');
+      this.router.navigateByUrl('/connexion');
+    }
   }
 }
