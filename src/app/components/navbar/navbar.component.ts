@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {NgOptimizedImage} from "@angular/common";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -14,4 +14,13 @@ import {RouterLink} from "@angular/router";
 })
 export class NavbarComponent {
 
+  constructor(private router: Router) {
+  }
+  deco() {
+    const confirmation= confirm('Voulez vous vous déconnecter');
+    if (confirmation) {
+      localStorage.removeItem('token');
+      this.router.navigateByUrl('/connexion');
+    }
+  }
 }

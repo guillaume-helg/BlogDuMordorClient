@@ -1,14 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {
-  Form,
-  FormBuilder,
-  FormControl,
-  FormGroup,
   FormsModule,
-  NgModel,
   ReactiveFormsModule,
-  Validators
 } from '@angular/forms';
 import {Publier} from "../../service/publier";
 import {Article} from "../../models/article.model";
@@ -23,8 +17,6 @@ import {ArticleService} from "../../service/article.service";
     NgIf,
     ReactiveFormsModule,
     FormsModule
-
-
   ],
   templateUrl: './article.component.modif.html',
   styleUrl: './article.component.modif.css'
@@ -65,9 +57,7 @@ export class ModifFormComponent implements OnInit{
   supr() {
     this.pub.supprimerArticle(this.articleaffichage?.identifiant).subscribe(data => {
       console.log(data);
-    }
-    );
-
+    });
   }
 }
 
