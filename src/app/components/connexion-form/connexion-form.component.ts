@@ -32,7 +32,7 @@ export class ConnexionFormComponent implements OnInit {
   login() {
     this.noconnexion = false;
     this.connexionService.login(this.email, this.password).subscribe(result => {
-      if (result) {
+      if (result && this.connexionService.isloggedIn()) {
         localStorage.setItem('token', Math.random().toString());
         this.router.navigateByUrl('/home');
       } else {

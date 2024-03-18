@@ -17,5 +17,4 @@ import {ArticleBoxComponent} from "../../components/article-box/article-box.comp
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-
 }
