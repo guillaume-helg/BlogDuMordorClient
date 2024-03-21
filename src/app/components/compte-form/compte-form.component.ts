@@ -8,15 +8,19 @@ import { Component } from '@angular/core';
   styleUrl: './compte-form.component.css'
 })
 export class CompteFormComponent {
-  nom : string;
-  prenom : string;
-  email : string;
-  numeroTel : string;
-  password : string;
+  // nom : string;
+  // prenom : string;
+  // email : string;
+  // numeroTel : string;
+  // password : string;
 
   constructor() {
   }
   modifierCompte() {
+
+  }
+
+  supprimerCompte() {
 
   }
 }
