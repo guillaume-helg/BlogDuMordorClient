@@ -13,7 +13,7 @@ export class SuppressionService {
 
   constructor(private http: HttpClient) { }
 
-  deleteutilisateur(id: Observable<number[]>): Observable<any> {
+  deleteutilisateur(id: number | undefined): Observable<any> {
     return this.http.delete( `http://localhost:3000/utilisateurs/remove/${id}`,{ withCredentials: true})
   }
 

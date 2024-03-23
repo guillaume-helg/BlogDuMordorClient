@@ -7,23 +7,23 @@
       <div class="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
         <div class="col-span-full sm:col-span-3">
           <label for="firstname" class="text-sm">Prénom</label>
-          <input id="firstname" type="text" placeholder="First name" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-400 dark:border-gray-700 dark:text-gray-900">
+          <input id="firstname" type="text" [(ngModel)]="prename" [ngModelOptions]="{standalone: true}" placeholder="First name" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-400 dark:border-gray-700 dark:text-gray-900">
         </div>
         <div class="col-span-full sm:col-span-3">
           <label for="lastname" class="text-sm">Nom</label>
-          <input id="lastname" type="text" placeholder="Last name" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-400 dark:border-gray-700 dark:text-gray-900">
+          <input id="lastname" type="text" [(ngModel)]="name" [ngModelOptions]="{standalone: true}" placeholder="Last name" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-400 dark:border-gray-700 dark:text-gray-900">
         </div>
         <div class="col-span-full sm:col-span-3">
           <label for="email" class="text-sm">Email</label>
-          <input id="email" type="email" placeholder="Email" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-400 dark:border-gray-700 dark:text-gray-900" style="padding-right: 41.6px !important;" data-protonpass-base-css="{&quot;padding-right&quot;:&quot;&quot;}">
+          <input id="email" type="email" placeholder="Email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-400 dark:border-gray-700 dark:text-gray-900" style="padding-right: 41.6px !important;" data-protonpass-base-css="{&quot;padding-right&quot;:&quot;&quot;}">
         </div>
         <div class="col-span-full">
           <label for="address" class="text-sm">Mot de passe</label>
-          <input id="address" type="password" placeholder="" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-400 dark:border-gray-700 dark:text-gray-900">
+          <input id="address" type="password" placeholder="" [(ngModel)]="pass" [ngModelOptions]="{standalone: true}" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-400 dark:border-gray-700 dark:text-gray-900">
         </div>
         <div class="col-span-full sm:col-span-2">
           <label for="tel" class="text-sm">Téléphone</label>
-          <input id="tel" type="tel" placeholder="" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-400 dark:border-gray-700 dark:text-gray-900">
+          <input id="tel" type="tel" placeholder="" [(ngModel)]="tel" [ngModelOptions]="{standalone: true}" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-400 dark:border-gray-700 dark:text-gray-900">
         </div>
       </div>
 

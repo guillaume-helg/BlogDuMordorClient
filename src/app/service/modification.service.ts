@@ -13,7 +13,7 @@ export class ModificationService {
 
   constructor(private http: HttpClient) { }
 
-  updateutilisateur(utilisateur: Observable<Utilisateur[]>): Observable<any>  {
+  updateutilisateur(utilisateur: Utilisateur | undefined): Observable<any>  {
     return this.http.post(this.apiUrl, utilisateur,{ withCredentials: true} )
   }
 
