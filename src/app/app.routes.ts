@@ -7,12 +7,13 @@ import{ModifFormComponent} from "./components/modif-form/article-form.component.
 import { authGuard } from './auth.guard';
 import {SignupFormComponent} from "./components/signup-form/signup-form.component";
 import {MonCompteComponent} from "./pages/mon-compte/mon-compte.component";
+import {EcritureComponent} from "./pages/ecriture/ecriture.component";
 
 export const routes: Routes = [
   { path: '', redirectTo: 'connexion', pathMatch: 'full',  },
   { path: 'article/:id', component: ArticleComponent},
   { path: 'home', component: HomeComponent, canActivate: [authGuard]},
-  { path: 'ecriture', component: EcritureFormComponent, canActivate: [authGuard]},
+  { path: 'ecriture', component: EcritureComponent, canActivate: [authGuard]},
   { path: 'connexion', component: ConnexionComponent},
   { path: 'inscription', component: SignupFormComponent},
   { path: 'compte', component: MonCompteComponent, canActivate: [authGuard]},
