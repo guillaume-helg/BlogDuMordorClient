@@ -3,6 +3,7 @@ import {Form, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsMod
 import {Publier} from "../../service/publier";
 import {Article} from "../../models/article.model";
 import {NgIf} from "@angular/common";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-ecriture-form',
@@ -22,7 +23,7 @@ export class EcritureFormComponent {
   currentDate: Date = new Date();
   count = 0;
 
-  constructor(private fb: FormBuilder, private pub: Publier,) {
+  constructor(private fb: FormBuilder, private pub: Publier, private router : Router) {
     let date: Date = new Date('shortDate');
 
     this.article = this.fb.group({
@@ -41,7 +42,7 @@ export class EcritureFormComponent {
     this.pub.addArticle(this.articles).subscribe(data=>{console.log(data)
     });
     console.log(this.articles);
-
+    this.router.navigateByUrl('/home');
   }
 
 }

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {
   FormsModule,
   ReactiveFormsModule,
@@ -30,9 +30,10 @@ export class ModifFormComponent implements OnInit{
   contenu: string | undefined = 'super';
 
 
-  constructor( private pub: Publier,private route: ActivatedRoute, private articleService: ArticleService) {
-
-  }
+  constructor(private pub: Publier,
+              private route: ActivatedRoute,
+              private articleService: ArticleService,
+              private router : Router) { }
 
   ngOnInit(): void {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
@@ -51,13 +52,13 @@ export class ModifFormComponent implements OnInit{
     /*this.pub.addArticle(this.articleaffichage).subscribe(data=>{console.log(data)
     });
     console.log(this.articleaffichage);*/
-
   }
 
   supr() {
     this.pub.supprimerArticle(this.articleaffichage?.identifiant).subscribe(data => {
       console.log(data);
     });
+    this.router.navigateByUrl('/home');
   }
 }
 
