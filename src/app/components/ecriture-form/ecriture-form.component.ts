@@ -20,11 +20,10 @@ import {Router} from "@angular/router";
 export class EcritureFormComponent {
   article : FormGroup;
   articles: Article;
-  currentDate: Date = new Date();
   count = 0;
 
   constructor(private fb: FormBuilder, private pub: Publier, private router : Router) {
-    let date: Date = new Date('shortDate');
+    let date: string= new Date().toDateString();
 
     this.article = this.fb.group({
       identifiant:[this.count, Validators.required],
