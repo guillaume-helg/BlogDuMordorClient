@@ -16,7 +16,7 @@ export class ArticleService {
     return this.http.get<Article[]>(this.apiUrl, { withCredentials: true });
   }
 
-  getArticleById(id: number): Observable<Article | undefined> {
+  getArticleById(id: number | undefined): Observable<Article | undefined> {
     return this.getArticles().pipe(
       map(articles => articles.find(article => article.identifiant === id))
     );

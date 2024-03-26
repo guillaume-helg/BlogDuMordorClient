@@ -1,0 +1,21 @@
+<div class="pl-20 pr-20">
+  <div class="text-3xl font-bold mt-20 mb-20">Accueil</div>
+  <div class="flex flex-row flex-wrap gap-10 justify-around mb-20">
+    <div *ngFor="let article of articles">
+      <article [routerLink]="['/article', article.identifiant]" class="cursor-pointer max-w-md p-6 overflow-hidden rounded-lg shadow dark:bg-gray-900 dark:text-gray-100">
+        <article>
+          <h2 class="text-xl font-bold">{{ article.titre }}</h2>
+          <p class="mt-4 dark:text-gray-400">{{ article.contenu }}</p>
+          <div class="flex items-center mt-8 space-x-4">
+            <img src="https://source.unsplash.com/100x100/?portrait" alt="" class="w-10 h-10 rounded-full dark:bg-gray-500">
+            <div>
+              <h3 class="text-sm font-medium">{{ article.auteur}}</h3>
+              <time datetime="2021-02-18" class="text-sm dark:text-gray-400">{{ article.date_publication }}</time>
+            </div>
+          </div>
+        </article>
+      </article>
+    </div>
+  </div>
+</div>
+

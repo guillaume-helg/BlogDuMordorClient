@@ -7,17 +7,32 @@ import { Blog } from '../models/blog.model';
 })
 export class BlogsService {
 
-  private apiUrl = 'http://localhost:3000/blog';
+  private apiUrl = 'http://localhost:3000/blogs';
 
   constructor(private http: HttpClient) { }
 
-  getblogs(): Observable<Blog[]> {
+  public blogs: Blog[] = [];
+  getBlogs(): Observable<Blog[]> {
     return this.http.get<Blog[]>(this.apiUrl, { withCredentials: true });
   }
 
-  getblogsById(id: number): Observable< Blog| undefined> {
-    return this.getblogs().pipe(
+  getBlogsById(id: number | undefined): Observable<Blog | undefined> {
+    return this.getBlogs().pipe(
+      map(blogs => blogs.find(blog => blog.idAuteur === id))
+    );
+  }
+  getBlogsByIdpart(id: number ): Observable<Blog | undefined> {
+    return this.getBlogs().pipe(
       map(blogs => blogs.find(blog => blog.droitAcces.includes(id)))
     );
+  }
+  getBlogsByIdblog(id: number ): Observable<Blog | undefined> {
+    return this.getBlogs().pipe(
+      map(blogs => blogs.find(blog => blog.identifiant === id))
+    );
+  }
+
+  getBlog(): Blog[] {
+    return this.blogs;
   }
 }

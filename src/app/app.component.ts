@@ -7,11 +7,12 @@ import {ConnexionService} from "./service/connexion.service";
 import {InscriptionService} from "./service/inscription.service";
 import {SuppressionService} from "./service/suppression.service";
 import {ModificationService} from "./service/modification.service";
+import {BlogsService} from "./service/blogs.service";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  providers: [ArticleService, Publier, ConnexionService, InscriptionService, SuppressionService, ModificationService],
+  providers: [ArticleService, Publier, ConnexionService, InscriptionService, SuppressionService, ModificationService,BlogsService],
   imports: [RouterOutlet,HttpClientModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

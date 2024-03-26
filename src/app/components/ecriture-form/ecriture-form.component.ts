@@ -4,6 +4,7 @@ import {Publier} from "../../service/publier";
 import {Article} from "../../models/article.model";
 import {NgIf} from "@angular/common";
 import {Router} from "@angular/router";
+import {ConnexionService} from "../../service/connexion.service";
 
 @Component({
   selector: 'app-ecriture-form',
@@ -21,13 +22,15 @@ export class EcritureFormComponent {
   article : FormGroup;
   articles: Article;
   count = 0;
+  id: number | undefined =this.co.getCurrentUser().identifiant;
 
-  constructor(private fb: FormBuilder, private pub: Publier, private router : Router) {
+  constructor(private fb: FormBuilder, private pub: Publier, private router : Router, private co : ConnexionService) {
     let date: string= new Date().toDateString();
 
     this.article = this.fb.group({
       identifiant:[this.count, Validators.required],
       auteur: ['francis', Validators.required],
+      idAuteur: [this.id, Validators.required],
       titre: ['', Validators.required],
       contenu: [ '', Validators.required],
       date_publication: [date, Validators.required],
