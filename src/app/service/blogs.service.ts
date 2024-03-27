@@ -31,8 +31,13 @@ export class BlogsService {
       map(blogs => blogs.find(blog => blog.identifiant === id))
     );
   }
-
-  getBlog(): Blog[] {
-    return this.blogs;
+  mettrePublic(idBlog: number ): Observable<any> {
+    return this.http.post('http://localhost:3000/blogs/public',{idBlog}, { withCredentials: true });
+  }
+  mettrePriver(idBlog: number ): Observable<any> {
+    return this.http.post('http://localhost:3000/blogs/private',{idBlog}, { withCredentials: true });
+  }
+  addUser(idBlog:number , idUser:number ): Observable<any> {
+    return this.http.post('http://localhost:3000/blogs/invite',{idBlog, idUser}, { withCredentials: true });
   }
 }

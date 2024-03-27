@@ -15,7 +15,14 @@
           </div>
         </article>
       </article>
-    </div>
+     </div>
+
   </div>
+  <button  (click)="setPublic()" type="button" class="px-8 py-3 font-semibold rounded dark:bg-blue-300-100 dark:text-gray-800 cursor-pointer">Mettre public</button>
+  <button  (click)="setPrivate()" type="button" class="px-8 py-3 font-semibold rounded dark:bg-blue-300-100 dark:text-gray-800 cursor-pointer">Mettre priver</button>
+<div> <button  (click)="addUser()" type="button" class="px-8 py-3 font-semibold rounded dark:bg-blue-300-100 dark:text-gray-800 cursor-pointer">Ajouter une personne avec id</button>
+  <input id="user" [(ngModel)]="user">
+
+</div>
 </div>
 

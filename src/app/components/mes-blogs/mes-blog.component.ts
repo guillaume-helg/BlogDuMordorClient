@@ -27,7 +27,7 @@ export class MesBlogComponent {
     this.blogService.getBlogs().subscribe((blog) => {
       this.blogs = blog
       for (let i = 0; i < this.blogs.length; i++) {
-        if (this.blogs[i].idAuteur === this.id) {
+        if (this.blogs[i].droitAcces.includes(<number>this.id) ||this.blogs[i].droitAcces.length === 0) {
           this.blog = this.blogs[i];
           this.afficheBlog.push(this.blog);
         }
