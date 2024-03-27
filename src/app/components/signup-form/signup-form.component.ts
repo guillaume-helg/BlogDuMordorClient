@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {Utilisateur} from "../../models/utilisateur.model";
 import {InscriptionService} from "../../service/inscription.service";
 import {FormsModule} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-signup-form',
@@ -29,7 +30,7 @@ export class SignupFormComponent {
   numeroTel : string = ""
   password : string = ""
 
-  constructor(private inscription : InscriptionService) { }
+  constructor(private inscription : InscriptionService, private routeur: Router) { }
 
 
   inscire() {
@@ -43,5 +44,6 @@ export class SignupFormComponent {
     this.inscription.addutilisateur(this?.utilisateur).subscribe(data => {
       console.log(data);
     });
+    this.routeur.navigateByUrl('/connexion');
   }
 }

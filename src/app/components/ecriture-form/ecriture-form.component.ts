@@ -23,13 +23,14 @@ export class EcritureFormComponent {
   articles: Article;
   count = 0;
   id: number | undefined =this.co.getCurrentUser().identifiant;
+  nom : string | undefined = this.co.getCurrentUser().nom;
 
   constructor(private fb: FormBuilder, private pub: Publier, private router : Router, private co : ConnexionService) {
     let date: string= new Date().toDateString();
 
     this.article = this.fb.group({
       identifiant:[this.count, Validators.required],
-      auteur: ['francis', Validators.required],
+      auteur: [this.nom, Validators.required],
       idAuteur: [this.id, Validators.required],
       titre: ['', Validators.required],
       contenu: [ '', Validators.required],
