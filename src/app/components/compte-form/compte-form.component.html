@@ -4,29 +4,29 @@
       <div class="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
         <div class="col-span-full sm:col-span-3">
           <label for="prenom" class="text-sm">Prénom</label>
-          <input id="prenom" type="text" [(ngModel)]="prename" [ngModelOptions]="{standalone: true}" placeholder="prenom" class="w-full p-2 border rounded-md  focus:ring focus:ring-opacity-75 focus:dark:ring-violet-400 dark:border-gray-700 dark:text-gray-900">
+          <input id="prenom" type="text" [(ngModel)]="prename" [ngModelOptions]="{standalone: true}" placeholder="prenom" class="w-full p-2 border rounded-md  focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900">
         </div>
         <div class="col-span-full sm:col-span-3">
           <label for="nom" class="text-sm">Nom</label>
-          <input id="nom" type="text" [(ngModel)]="name" [ngModelOptions]="{standalone: true}" placeholder="nom" class="w-full p-2 border  rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-400 dark:border-gray-700 dark:text-gray-900">
+          <input id="nom" type="text" [(ngModel)]="name" [ngModelOptions]="{standalone: true}" placeholder="nom" class="w-full p-2 border  rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900">
         </div>
         <div class="col-span-full sm:col-span-3">
           <label for="email" class="text-sm">Email</label>
-          <input id="email" type="email" placeholder="email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" class="w-full p-2 border rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-400 dark:border-gray-700 dark:text-gray-900" style="padding-right: 41.6px !important;" data-protonpass-base-css="{&quot;padding-right&quot;:&quot;&quot;}">
+          <input id="email" type="email" placeholder="email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" class="w-full p-2 border rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900" style="padding-right: 41.6px !important;" data-protonpass-base-css="{&quot;padding-right&quot;:&quot;&quot;}">
         </div>
         <div class="col-span-full sm:col-span-3">
           <label for="pass" class="text-sm">Mot de passe</label>
-          <input id="pass" type="password" placeholder="***" [(ngModel)]="pass" [ngModelOptions]="{standalone: true}" class="w-full p-2 border rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-400 dark:border-gray-700 dark:text-gray-900">
+          <input id="pass" type="password" placeholder="***" [(ngModel)]="pass" [ngModelOptions]="{standalone: true}" class="w-full p-2 border rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900">
         </div>
         <div class="col-span-full sm:col-span-2">
           <label for="tel" class="text-sm">Téléphone</label>
-          <input id="tel" type="tel" placeholder="" [(ngModel)]="tel" [ngModelOptions]="{standalone: true}" class="w-full p-2 border rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-400 dark:border-gray-700 dark:text-gray-900">
+          <input id="tel" type="tel" placeholder="" [(ngModel)]="tel" [ngModelOptions]="{standalone: true}" class="w-full p-2 border rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900">
         </div>
       </div>
 
       <div class="col-span-full sm:col-span-2 flex flex-col justify-center gap-4">
-        <input (click)="modifierCompte()" id="modifCompte" type="button" value="Modifier mon compte" class="px-8 py-3 dark:bg-violet-400 font-semibold rounded dark:bg-blue-300-100 dark:text-gray-800 cursor-pointer">
-        <input (click)="supprimerCompte()" id="supprCompte" type="button" value="Supprimer mon compte" class="px-8 py-3 dark:bg-violet-400 font-semibold rounded dark:bg-blue-300-100 dark:text-gray-800 cursor-pointer">
+        <input (click)="modifierCompte()" id="modifCompte" type="button" value="Modifier mon compte" class="px-8 py-3 bg-violet-400 font-semibold rounded bg-blue-300-100 text-gray-800 cursor-pointer">
+        <input (click)="supprimerCompte()" id="supprCompte" type="button" value="Supprimer mon compte" class="px-8 py-3 bg-violet-400 font-semibold rounded bg-blue-300-100 text-gray-800 cursor-pointer">
       </div>
   </form>
 </div>

@@ -2,15 +2,15 @@
   <div class="text-3xl font-bold mt-20 mb-20">Accueil</div>
   <div class="flex flex-row flex-wrap gap-10 mb-20">
     <div *ngFor="let article of articles">
-      <article [routerLink]="['/article', article.identifiant]" class="cursor-pointer max-w-md p-6 overflow-hidden rounded-lg shadow dark:bg-gray-900 dark:text-gray-100">
+      <article [routerLink]="['/article', article.identifiant]" class="cursor-pointer max-w-md p-6 overflow-hidden rounded-lg shadow bg-gray-900 text-gray-100">
         <article>
           <h2 class="text-xl font-bold">{{ article.titre }}</h2>
-          <p class="mt-4 dark:text-gray-400">{{ article.contenu }}</p>
+          <p class="mt-4 text-gray-400">{{ article.contenu }}</p>
           <div class="flex items-center mt-8 space-x-4">
-            <img src="https://source.unsplash.com/100x100/?portrait" alt="" class="w-10 h-10 rounded-full dark:bg-gray-500">
+            <img src="https://source.unsplash.com/100x100/?portrait" alt="" class="w-10 h-10 rounded-full bg-gray-500">
             <div>
               <h3 class="text-sm font-medium">{{ article.auteur}}</h3>
-              <time datetime="2021-02-18" class="text-sm dark:text-gray-400">{{ article.date_publication }}</time>
+              <time datetime="2021-02-18" class="text-sm text-gray-400">{{ article.date_publication }}</time>
             </div>
           </div>
         </article>
@@ -18,11 +18,11 @@
      </div>
   </div>
   <div class="flex flex-col justify-center mb-5 gap-4">
-    <button (click)="setPublic()" type="button" class="px-8 py-3 dark:bg-violet-400 font-semibold rounded dark:bg-blue-300-100 dark:text-gray-800 cursor-pointer">Mettre public</button>
-    <button (click)="setPrivate()" type="button" class="px-8 py-3 dark:bg-violet-400 font-semibold rounded dark:bg-blue-300-100 dark:text-gray-800 cursor-pointer">Mettre priver</button>
+    <button (click)="setPublic()" type="button" class="px-8 py-3 bg-violet-400 font-semibold rounded bg-blue-300-100 text-gray-800 cursor-pointer">Mettre public</button>
+    <button (click)="setPrivate()" type="button" class="px-8 py-3 bg-violet-400 font-semibold rounded bg-blue-300-100 text-gray-800 cursor-pointer">Mettre priver</button>
     <div class="flex flex-col gap-4 justify-center">
-      <button (click)="addUser()" type="button" class="px-8 py-3 dark:bg-violet-400 font-semibold rounded dark:bg-blue-300-100 dark:text-gray-800 cursor-pointer">Ajouter une personne avec id</button>
-      <input id="user" [(ngModel)]="user" class="p-2 border rounded-md dark:border-gray-700">
+      <button (click)="addUser()" type="button" class="px-8 py-3 bg-violet-400 font-semibold rounded bg-blue-300-100 text-gray-800 cursor-pointer">Ajouter une personne avec id</button>
+      <input id="user" [(ngModel)]="user" class="p-2 border rounded-md border-gray-700">
     </div>
   </div>
 </div>
